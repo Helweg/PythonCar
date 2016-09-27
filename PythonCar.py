@@ -67,12 +67,12 @@ def motor2_reverse():
 def toggleSteering(direction):
 
 	if(direction == "right"):
-		M1_enable.ChangeDutyCycle(25)
-		M2_enable.ChangeDutyCycle(5)
+		M1_enable.ChangeDutyCycle(30)
+		M2_enable.ChangeDutyCycle(15)
 
 	if(direction == "left"):
-		M2_enable.ChangeDutyCycle(25)
-		M1_enable.ChangeDutyCycle(5)
+		M2_enable.ChangeDutyCycle(30)
+		M1_enable.ChangeDutyCycle(15)
 
 def sensorSteering():
 	while True:
