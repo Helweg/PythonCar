@@ -67,34 +67,24 @@ def motor2_reverse():
 def toggleSteering(direction):
 
 	if(direction == "right"):
-		motor1_forward()
-		motor2_forward()
-		M1_enable.ChangeDutyCycle(100)
-		M2_enable.ChangeDutyCycle(50)
+		M1_enable.ChangeDutyCycle(25)
+		M2_enable.ChangeDutyCycle(5)
 
 	if(direction == "left"):
-		motor1_forward()
-		motor2_forward()
-		M2_enable.ChangeDutyCycle(100)
-		M1_enable.ChangeDutyCycle(50)
+		M2_enable.ChangeDutyCycle(25)
+		M1_enable.ChangeDutyCycle(5)
 
 def sensorSteering():
-	input_state = io.input(9)
-	char = getch()
 	while True:
 		input_state = io.input(9)
 		if input_state == False:
 			toggleSteering("left")
 			print("0")
-			time.sleep(0.025)
+			time.sleep(0.02)
 		if input_state == True:
 			toggleSteering("right")
 			print("1")
-			time.sleep(0.025)
-		if (char == "x")
-			print("Program ended")
-			io.cleanup
-			sys.exit()
+			time.sleep(0.02)
 
 
 while True:
@@ -118,6 +108,8 @@ while True:
 		M2_enable.ChangeDutyCycle(47)
 		print("Reverse")
 	if(char == "t"):
+		motor1_forward()
+		motor2_forward()
 		sensorSteering()
 	if(char == "x"):
 		print("Program ended")
