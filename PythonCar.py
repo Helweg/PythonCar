@@ -79,7 +79,7 @@ def sensorSteering():
 		sensorLeft = io.input(9)
 		sensorRight = io.input()
 
-		if sensorLeft == False && sensorRight == False:
+		if sensorLeft == False and sensorRight == False:
 			motor1_forward()
 			motor2_forward()
 			M1_enable.ChangeDutyCycle(51)
