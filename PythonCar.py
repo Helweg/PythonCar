@@ -28,6 +28,7 @@ M2_enable.start(0)
 M2_enable.ChangeDutyCycle(0)
 
 io.setup(9, io.IN)
+io.setup(5, io.IN)
 
 def getch():
 	fd = sys.stdin.fileno()
@@ -76,22 +77,22 @@ def toggleSteering(direction):
 
 def sensorSteering():
 	while True:
-		sensorLeft = io.input(9)
-		sensorRight = io.input()
+		sensorLeft = io.input(5)
+		sensorRight = io.input(9)
 
-		if sensorLeft == False and sensorRight == False:
+		if sensorLeft == True and sensorRight == False:
 			motor1_forward()
 			motor2_forward()
-			M1_enable.ChangeDutyCycle(51)
-			M2_enable.ChangeDutyCycle(47)
+			M1_enable.ChangeDutyCycle(20)
+			M2_enable.ChangeDutyCycle(19)
 			print("Forward")
 			time.sleep(0.02)
-		if sensorRight == True
-			toggleSteering("left")
+		if sensorRight == True:
+			toggleSteering("right")
 			print("Right sensor on black")
 			time.sleep(0.02)
-		if sensorLeft == True:
-			toggleSteering("right")
+		if sensorLeft == False:
+			toggleSteering("left")
 			print("Left sensor on black")
 			time.sleep(0.02)
 
