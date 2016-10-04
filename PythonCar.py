@@ -80,18 +80,22 @@ def sensorSteering():
 		sensorLeft = io.input(5)
 		sensorRight = io.input(9)
 
+		#if sensorLeft == False:
+		#	print("left 1")
+		#	time.sleep(0.2)
+		#if sensorRight == True:
+		#	print("right 1")
+		#	time.sleep(0.2)
 		if sensorLeft == True and sensorRight == False:
-			motor1_forward()
-			motor2_forward()
 			M1_enable.ChangeDutyCycle(20)
 			M2_enable.ChangeDutyCycle(19)
 			print("Forward")
 			time.sleep(0.02)
-		if sensorRight == True:
+		if sensorRight == True and sensorLeft == True:
 			toggleSteering("right")
 			print("Right sensor on black")
 			time.sleep(0.02)
-		if sensorLeft == False:
+		if sensorLeft == False and sensorRight == False:
 			toggleSteering("left")
 			print("Left sensor on black")
 			time.sleep(0.02)
