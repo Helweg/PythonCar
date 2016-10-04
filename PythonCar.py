@@ -124,8 +124,6 @@ while True:
 	if(char == "x"):
 		print("Program ended")
 		break
-	#M1_enable.ChangeDutyCycle(0)
-	#M2_enable.ChangeDutyCycle(0)
 
 	char = ""
 
