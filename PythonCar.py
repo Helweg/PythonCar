@@ -1,4 +1,3 @@
-
 import RPi.GPIO as io
 io.setmode(io.BCM)
 import sys, tty, termios, time
@@ -68,12 +67,12 @@ def motor2_reverse():
 def toggleSteering(direction):
 
 	if(direction == "right"):
-		M1_enable.ChangeDutyCycle(30)
-		M2_enable.ChangeDutyCycle(15)
+		M1_enable.ChangeDutyCycle(4)
+		M2_enable.ChangeDutyCycle(40)
 
 	if(direction == "left"):
-		M2_enable.ChangeDutyCycle(30)
-		M1_enable.ChangeDutyCycle(15)
+		M2_enable.ChangeDutyCycle(4)
+		M1_enable.ChangeDutyCycle(40)
 
 def sensorSteering():
 	while True:
@@ -87,18 +86,15 @@ def sensorSteering():
 		#	print("right 1")
 		#	time.sleep(0.2)
 		if sensorLeft == True and sensorRight == False:
-			M1_enable.ChangeDutyCycle(20)
-			M2_enable.ChangeDutyCycle(19)
-			print("Forward")
-			time.sleep(0.02)
+			M1_enable.ChangeDutyCycle(25)
+			M2_enable.ChangeDutyCycle(25)
 		if sensorRight == True and sensorLeft == True:
 			toggleSteering("right")
-			print("Right sensor on black")
-			time.sleep(0.02)
 		if sensorLeft == False and sensorRight == False:
 			toggleSteering("left")
-			print("Left sensor on black")
-			time.sleep(0.02)
+		if sensorLeft == False and sensorRight == True:
+			M1_enable.ChangeDutyCycle(2)
+			M2_enable.ChangeDutyCycle(2)
 
 
 while True:
@@ -124,7 +120,10 @@ while True:
 	if(char == "t"):
 		motor1_forward()
 		motor2_forward()
-		sensorSteering()
+		try:
+			sensorSteering()
+		except KeyboardInterrupt:
+			print("Sensor steering off")
 	if(char == "x"):
 		print("Program ended")
 		break
